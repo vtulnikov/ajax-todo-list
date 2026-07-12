@@ -1,0 +1,391 @@
+* {
+    box-sizing: border-box;
+}
+.hidden{
+    display: none !important;
+} 
+.task textarea {
+    width: 100%;
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+    field-sizing: content;
+    max-height: 300px;
+    overflow-y: auto;
+}
+.rank textarea {
+    width: 30px;
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    /* background: linear-gradient(135deg, #287601 0%, #764ba2 100%); */
+    background: linear-gradient(135deg, #75b87a 0%, #287601 100%);
+    min-height: 100vh;
+    padding: 5px 20px;
+}
+
+#header {
+    max-width: 1200px;
+    margin: 0 auto 20px;
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    height: 320px;
+}
+#header h2 {
+    color: #2d4833;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 700;
+}
+#add-task textarea {
+    width: 100%;
+    padding: 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 15px;
+    resize: vertical;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+#add-task textarea:focus {
+    outline: none;
+    border-color: #287601;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#add-task select {
+    margin-top: 15px;
+    padding: 12px 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 15px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#add-task select:focus {
+    outline: none;
+    border-color: #287601;
+}
+
+#add-task button {
+    margin-top: 15px;
+    margin-left: 15px;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #75b87a 0%, #287601 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 234, 102, 0.4);
+}
+
+#add-task button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 234, 102, 0.4);
+}
+
+#container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    overflow: hidden;
+    position: relative;
+}
+.error{
+    border: 1px solid red;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #f7fafc;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+thead th {
+    padding: 18px 24px;
+    color: #4a5568;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #edf2f7;
+    transition: all 0.2s ease !important;
+}
+
+tbody tr:hover {
+    background: #f7fafc;
+    /*убрал анимацию при  наведении, бесит*/
+    /* transform: translateX(4px) !important; */
+}
+
+tbody td {
+    padding: 10px 24px;
+}
+
+tbody td:first-child {
+    color: #287601;
+    font-weight: 700;
+    font-size: 16px;
+    width: 50px;
+}
+
+tbody td:nth-child(2) {
+    color: #35482d;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 3px;
+}
+
+tbody td:nth-child(3) {
+    text-align: center;
+    width: 80px;
+}
+
+.rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%; /* Сделаем кружочком */
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease;
+}
+
+.rank-badge:hover {
+    transform: scale(1.1);
+}
+
+/* --- Спектр от Красного (10) к Зеленому (1) --- */
+
+.rank-10 { 
+    background: linear-gradient(135deg, #ed213a 0%, #93291e 100%); 
+    color: white;
+}
+
+.rank-9 { 
+    background: linear-gradient(135deg, #ff512f 0%, #f09819 100%); 
+    color: white;
+}
+
+.rank-8 { 
+    background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%); 
+    color: white;
+}
+
+.rank-7 { 
+    background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%); 
+    color: #4a5568; /* Темный текст для читаемости */
+}
+
+.rank-6 { 
+    background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%); 
+    color: #4a5568; /* Темный текст для читаемости */
+}
+.rank-5 { 
+    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); 
+    color: #4a5568; /* Темный текст для читаемости */
+}
+.rank-4 { 
+    background: linear-gradient(135deg, #0ba360 0%, #3cba92 100%); 
+    color: white;
+}
+
+.rank-3 { 
+    background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%); 
+    color: white;
+}
+
+.rank-2 { 
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); 
+    color: white;
+}
+
+.rank-1 { 
+    background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%); 
+    color: white;
+}
+.delete img{
+    width: 20px;
+    cursor: pointer;
+}
+.confirm-popup {
+  position: absolute;
+  /* Позиционируем над кнопкой */
+  bottom: 100%; 
+  transform: translateX(-65%); /* Центрируем по горизонтали относительно кнопки */
+  
+  /* Отступ снизу, чтобы не прилипало к кнопке */
+  margin-bottom: 8px; 
+  
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 10px;
+  border-radius: 6px;
+  white-space: nowrap; /* Чтобы текст не переносился странно */
+  z-index: 1000; 
+  font-family: sans-serif;
+  font-size: 14px;
+}
+.confirm-popup p{
+    text-align: center;
+    padding-bottom: 10px;
+}
+.confirm-popup button{
+    padding: 5px 15px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #75b87a 0%, #287601 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 234, 172, 0.4);
+}
+
+.confirm-popup button:hover {
+    /* transform: translateY(-2px); */
+    box-shadow: 0 6px 20px rgba(102, 234, 168, 0.5);
+}
+
+/* Стрелочка вниз ( для красоты) */
+.confirm-popup::after {
+  content: '';
+  position: absolute;
+  top: 100%; /* Внизу попапа */
+  left: 73%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+.action-cell {
+  position: relative; 
+  display: inline-block;
+}
+#confirm-creation-popup{
+    position: absolute;
+    left: 50%;
+    top: 7px;
+    margin-left: -100px;
+    border-radius: 10px;
+    padding: 30px;
+    background: rgba(102, 234, 109, 0.5);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border: 1px solid #66ea87;
+}
+ .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 20px 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.pagination a,
+.pagination span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #4e9a54;
+    background: #f0fff2;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.pagination a:hover {
+    background: #E8DCFF;
+    border-color: #89d47f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(78, 154, 88, 0.2);
+}
+
+.pagination .active {
+    background: linear-gradient(135deg, #74db54 0%, #287601 100%);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(122, 212, 95, 0.4);
+    cursor: pointer;
+}
+.pagination .active:hover{
+    background: linear-gradient(135deg, #74db54 0%, #287601 100%);
+}
+.pagination .separator {
+    color: #97d47f;
+    font-weight: 300;
+    padding: 0 4px;
+}
+#loader{
+    position: absolute;
+    left: 50%;
+    top: 330px;
+    z-index: 10;
+}
+.loading {
+	width: 40px;
+	height: 40px;
+	border: 4px solid rgba(0, 0, 0, 0.1);
+	border-radius: 50%;
+	border-left-color: #75b87a;
+	animation: spin 1s linear infinite;
+	margin: 20px auto;
+
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .pagination a,
+    .pagination span {
+        min-width: 32px;
+        height: 32px;
+        padding: 0 8px;
+        font-size: 13px;
+    }
+}
